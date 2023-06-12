@@ -5,43 +5,62 @@ createApp({
         return{
             tasks: [
                 {
-                    text:'sciamm a mangia na pezz',
+                    text:'andiamo  mangiare una pizza',
                     done: false
                 },
                 {
-                    text:'sciamm a mangia na pezz',
+                    text:'guardare la finale di champions',
                     done: false
                 },
                 {
-                    text:'sciamm a mangia na pezz',
+                    text:'uscire per bere una grappa 903',
                     done: false
                 },
                 {
-                    text:'sciamm a mangia na pezz',
+                    text:'chiamare Luciano',
                     done: false
                 },
                 {
-                    text:'sciamm a mangia na pezz',
+                    text:'uscire il cane',
                     done: false
                 },
                 {
-                    text:'sciamm a mangia na pezz',
+                    text:'fare la spesa',
                     done: false
                 },
                 {
-                    text:'sciamm a mangia na pezz',
+                    text:'prenotare il viaggio in America',
                     done: false
                 },
                 {
-                    text:'sciamm a mangia na pezz',
+                    text:'andare dal medico',
                     done: false
                 },
                 {
-                    text:'sciamm a mangia na pezz',
+                    text:'completare questo esercizio',
                     done: false
                 },
             ]
 
+        }
+    },
+    methods:{
+        taskDone(index){
+            this.tasks[index].done = !this.tasks[index].done
+        },
+
+        taskDelete(index){
+            this.tasks.splice(index, 1)
+        },
+
+        addTask(){
+            let new_task = {
+                text: this.txt,
+                done: true
+            }
+
+            this.tasks.push(new_task);
+            this.txt = ''
         }
     }
 }).mount('.container')

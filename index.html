@@ -6,13 +6,37 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <div class="container fluid">
-        <h1>TODO LIST</h1>
-        <ul v-for="(text,done) in tasks"  class="list-group pt-3">
-            <li class="list-group-item">peppino la uacc</li>
-            
+        <h1>TODO-LIST</h1>
+        <ul   class="list-group ">
+            <h3>la mia tasks</h3>
+            <li v-for="(task,done) in tasks"  class="list-group-item d-flex justify-content-between mb-1">
+                <h3 :class="task.done ? '' : 'done-task'">{{ task.text }}</h3>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary" @click="taskDone(index)" :class="task.done ? 'btn-success' : 'btn-dark'">
+                        <i class="fa-solid" :class="task.done ? 'fa-check' : 'fa-xmark'"></i>
+                    </button>
+                    <button type="button" class="btn btn-warning">
+                        <i class="fa-sharp fa-solid fa-file-pen"></i>
+                    </button>
+                    <button type="button" class="btn btn-danger" @click="taskDelete(index)">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            </li>   
+        </ul>
+        <ul id="second-list" class="list-group mt-2">
+            <li class="list-group-item d-flex justify-content-between">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Inserisci nuova task" v-model="txt" @keyup.enter="addTask()">
+                </div>
+                <button type="button" class="btn btn-success" @click="addTask()">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </li>
         </ul>
 
     </div>
